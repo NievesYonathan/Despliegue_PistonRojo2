@@ -68,6 +68,9 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_2A859C21E44C4627B5FF497DC4079557 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_94CBAEB6C92A4A7CA4423401DECDD97F }}
 
+      - name: Espera para evitar conflicto con SCM
+        run: sleep 15
+
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
@@ -75,4 +78,3 @@ jobs:
           app-name: 'pistonrojo2'
           slot-name: 'Production'
           package: .
-          
